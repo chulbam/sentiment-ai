@@ -1,4 +1,7 @@
 import streamlit as st
+from textblob import TextBlob
+from datetime import datetime
+
 st.set_page_config(page_title="루의 감정분석기", page_icon="🧠", layout="centered")
 
 st.markdown(
@@ -32,17 +35,12 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-from textblob import TextBlob
-from datetime import datetime
-
-st.title("🧠 감정 분석기")
+st.title("🧠 루의 감정분석기")
 st.write("문장을 입력하면 AI가 감정을 분석해줍니다.")
 
 text = st.text_input("감정을 분석할 문장을 입력하세요:")
 
-if st.button("분석하기"):
-    # 로그 파일 읽기
-# 로그 먼저 보여주기 (너 스타일 유지)
+# 기록 먼저 보여주기
 if st.checkbox("이전 기록 보기"):
     try:
         with open("sentiment_log.txt", "r", encoding="utf-8") as f:
@@ -51,8 +49,8 @@ if st.checkbox("이전 기록 보기"):
     except FileNotFoundError:
         st.info("아직 기록이 없습니다.")
 
-# 감정 분석 버튼
-if st.button("분석하기"):
+# 감정 분석
+if st.button("분석하기") and text:
     blob = TextBlob(text)
     sentiment = blob.sentiment.polarity
 
