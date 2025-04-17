@@ -1,3 +1,4 @@
+import streamlit as st
 st.set_page_config(page_title="루의 감정분석기", page_icon="🧠", layout="centered")
 
 st.markdown(
@@ -31,7 +32,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-import streamlit as st
 from textblob import TextBlob
 from datetime import datetime
 
