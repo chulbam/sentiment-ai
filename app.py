@@ -7,8 +7,6 @@ st.write("문장을 입력하면 AI가 감정을 분석해줍니다.")
 
 text = st.text_input("감정을 분석할 문장을 입력하세요:")
 
-if st.button("분석하기"):
-    # 로그 파일 읽기
 if st.checkbox("이전 기록 보기"):
     try:
         with open("sentiment_log.txt", "r", encoding="utf-8") as f:
@@ -16,6 +14,7 @@ if st.checkbox("이전 기록 보기"):
             st.text_area("📜 감정 분석 기록", log, height=250)
     except FileNotFoundError:
         st.info("아직 기록이 없습니다.")
+
 
     blob = TextBlob(text)
     sentiment = blob.sentiment.polarity
